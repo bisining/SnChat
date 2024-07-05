@@ -2,6 +2,7 @@
 </script>
 
 <template>
-  <main>
-  </main>
+  <SnContainer >
+    <h1>test</h1>
+  </SnContainer>
 </template>
