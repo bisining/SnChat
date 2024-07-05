@@ -1,9 +1,8 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
-  <RotereView />
+  <RouterView />
 </template>
 
 <style scoped></style>

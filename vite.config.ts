@@ -1,8 +1,31 @@
 import { fileURLToPath, URL } from 'node:url'
 
-import { defineConfig } from 'vite'
+import { Alias, defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
+
+function resolvePath(src: string) {
+  return fileURLToPath(new URL(src, import.meta.url))
+}
+
+const alias: Alias[] = [
+  {
+    find: '@',
+    replacement: resolvePath('./src')
+  },
+  {
+    find: '@views',
+    replacement: resolvePath('./src/views')
+  },
+  {
+    find: '@css',
+    replacement: resolvePath('./src/assets/css')
+  },
+  {
+    find: '@components',
+    replacement: resolvePath('./src/components')
+  }
+]
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -11,24 +34,7 @@ export default defineConfig({
     open: true
   },
   resolve: {
-    alias: [
-      {
-        find: '@',
-        replacement: fileURLToPath(new URL('./src', import.meta.url))
-      },
-      {
-        find: '@views',
-        replacement: fileURLToPath(new URL('./src/views', import.meta.url))
-      },
-      {
-        find: '@css',
-        replacement: fileURLToPath(new URL('./src/assets/css', import.meta.url))
-      },
-      {
-        find: '@components',
-        replacement: fileURLToPath(new URL('./src/components', import.meta.url))
-      }
-    ]
+    alias
   },
   build: {
     rollupOptions: {
