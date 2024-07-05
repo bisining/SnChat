@@ -8,7 +8,11 @@ import router from './router'
 
 const app = createApp(App)
 
-app.use(createPinia())
-app.use(router)
+// Vue相关
+app.use(createPinia()).use(router)
+
+// 第三方相关
+import { layout } from '@components/layout'
+app.use(layout)
 
 app.mount('#app')
