@@ -12,7 +12,7 @@ const app = createApp(App)
 app.use(createPinia()).use(router)
 
 // 第三方相关
-import { layout } from '@components/layout'
-app.use(layout)
+import { globalComponents } from '@/components/globalComponents'
+app.use(globalComponents)
 
 app.mount('#app')
