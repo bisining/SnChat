@@ -5,11 +5,17 @@
  * @example
  * ```js
  * const fileName = extractFilename('./src/component/HelloWorld.vue')
- * return HelloWorld
+ * return 'HelloWorld'
  * ```
  */
 export function extractFilename(str: string): string {
   const parts = str.split('/')
   const filename = parts[parts.length - 1]
-  return filename.split('.')[0]
+  const filenameParts = filename.split('.')
+  if (filenameParts.length === 1) {
+    return filenameParts.join('.')
+  } else {
+    filenameParts.pop()
+    return filenameParts.join('.')
+  }
 }
